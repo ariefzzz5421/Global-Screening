@@ -1,0 +1,279 @@
+:root {
+  --bg: #0a1020;
+  --bg-soft: #111b34;
+  --card: rgba(17, 27, 52, 0.7);
+  --text: #eaf1ff;
+  --muted: #9cb1d9;
+  --accent: #5fd4ff;
+  --accent-2: #8b5cf6;
+  --green: #33d17a;
+  --red: #ff5d73;
+  --border: rgba(255, 255, 255, 0.12);
+}
+
+body.light {
+  --bg: #eef4ff;
+  --bg-soft: #ffffff;
+  --card: rgba(255, 255, 255, 0.88);
+  --text: #111827;
+  --muted: #4b5563;
+  --accent: #0ea5e9;
+  --accent-2: #6d28d9;
+  --border: rgba(17, 24, 39, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+  background: radial-gradient(circle at 20% 20%, #1b2f5f, var(--bg));
+  color: var(--text);
+  padding: 2rem clamp(1rem, 3vw, 3rem);
+  position: relative;
+  overflow-x: hidden;
+}
+
+.aurora {
+  position: fixed;
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.35;
+  z-index: -1;
+}
+
+.aurora-1 {
+  background: var(--accent);
+  top: -120px;
+  left: -100px;
+}
+
+.aurora-2 {
+  background: var(--accent-2);
+  right: -80px;
+  bottom: -100px;
+}
+
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: start;
+  margin-bottom: 1.3rem;
+}
+
+h1 {
+  margin: 0.2rem 0;
+  font-size: clamp(1.6rem, 3vw, 2.5rem);
+}
+
+.eyebrow {
+  margin: 0;
+  letter-spacing: 0.2em;
+  font-size: 0.75rem;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.subtitle {
+  margin: 0;
+  color: var(--muted);
+  max-width: 760px;
+}
+
+.glass-btn,
+.tab,
+#sortSelect,
+.details-btn,
+#closeDialog {
+  border: 1px solid var(--border);
+  color: var(--text);
+  background: var(--card);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.glass-btn,
+#sortSelect {
+  padding: 0.65rem 1rem;
+}
+
+.menu-tabs {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.tab {
+  padding: 0.7rem 1rem;
+  font-weight: 600;
+}
+
+.tab.active {
+  background: linear-gradient(130deg, rgba(95, 212, 255, 0.35), rgba(139, 92, 246, 0.4));
+  border-color: transparent;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.55rem 0.8rem;
+  min-width: min(100%, 320px);
+}
+
+.search-box input {
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--text);
+  width: 100%;
+  font-size: 0.95rem;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 0.9rem;
+  margin-bottom: 1.2rem;
+}
+
+.summary-card,
+.asset-card,
+dialog {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1rem;
+  backdrop-filter: blur(12px);
+}
+
+.summary-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.summary-card h3 {
+  margin: 0.4rem 0 0;
+}
+
+.asset-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.asset-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.ticker {
+  margin: 0;
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.name {
+  margin: 0.2rem 0 0;
+}
+
+.badge {
+  align-self: start;
+  font-size: 0.73rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.market-cap,
+.price,
+.change {
+  margin: 0.55rem 0 0;
+  font-size: 0.92rem;
+}
+
+.change.up {
+  color: var(--green);
+}
+
+.change.down {
+  color: var(--red);
+}
+
+.sparkline {
+  margin-top: 0.7rem;
+  display: flex;
+  gap: 4px;
+  height: 40px;
+}
+
+.sparkline span {
+  flex: 1;
+  border-radius: 5px 5px 2px 2px;
+  background: linear-gradient(180deg, var(--accent), transparent);
+  opacity: 0.8;
+}
+
+.details-btn {
+  width: 100%;
+  margin-top: 0.9rem;
+  padding: 0.55rem;
+  font-weight: 600;
+}
+
+#detailDialog {
+  width: min(560px, calc(100% - 2rem));
+  color: var(--text);
+}
+
+#detailDialog::backdrop {
+  background: rgba(8, 12, 22, 0.72);
+}
+
+.dialog-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+#closeDialog {
+  padding: 0.25rem 0.5rem;
+}
+
+@media (max-width: 640px) {
+  .site-header {
+    flex-direction: column;
+  }
+
+  .toolbar {
+    flex-direction: column;
+  }
+
+  #sortSelect {
+    width: 100%;
+  }
+}
