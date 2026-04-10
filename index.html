@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Global Screening Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="aurora aurora-1"></div>
+    <div class="aurora aurora-2"></div>
+
+    <header class="site-header">
+      <div>
+        <p class="eyebrow">GLOBAL SCREENING</p>
+        <h1>Stock, Crypto & Macro Monitor</h1>
+        <p class="subtitle">
+          Interactive watchlist untuk top market cap assets. Data saat ini disiapkan sebagai
+          baseline dan siap kamu update kapan saja.
+        </p>
+      </div>
+      <div class="header-actions">
+        <button class="glass-btn" id="themeToggle">Toggle Theme</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="menu-tabs" aria-label="Menu utama">
+        <button class="tab active" data-tab="stocks">Saham Indonesia</button>
+        <button class="tab" data-tab="crypto">Crypto</button>
+        <button class="tab" data-tab="macro">Macro</button>
+      </section>
+
+      <section class="toolbar">
+        <label class="search-box">
+          <span>🔎</span>
+          <input type="text" id="searchInput" placeholder="Cari asset / kode..." />
+        </label>
+        <select id="sortSelect">
+          <option value="marketCap_desc">Market Cap (Desc)</option>
+          <option value="marketCap_asc">Market Cap (Asc)</option>
+          <option value="change_desc">Daily Change (Desc)</option>
+          <option value="change_asc">Daily Change (Asc)</option>
+          <option value="name_asc">Name (A-Z)</option>
+        </select>
+      </section>
+
+      <section id="summaryCards" class="summary-grid"></section>
+
+      <section id="assetGrid" class="asset-grid"></section>
+    </main>
+
+    <template id="assetCardTemplate">
+      <article class="asset-card">
+        <div class="asset-top">
+          <div>
+            <p class="ticker"></p>
+            <h3 class="name"></h3>
+          </div>
+          <span class="badge"></span>
+        </div>
+        <p class="market-cap"></p>
+        <p class="price"></p>
+        <p class="change"></p>
+        <div class="sparkline" aria-hidden="true"></div>
+        <button class="details-btn">Lihat Detail</button>
+      </article>
+    </template>
+
+    <dialog id="detailDialog">
+      <div class="dialog-head">
+        <h3 id="dialogTitle"></h3>
+        <button id="closeDialog">✕</button>
+      </div>
+      <p id="dialogBody"></p>
+    </dialog>
+
+    <script src="script.js"></script>
+  </body>
+</html>
