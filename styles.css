@@ -86,11 +86,18 @@ h1 {
   max-width: 760px;
 }
 
+.header-actions {
+  display: flex;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+}
+
 .glass-btn,
 .tab,
 #sortSelect,
 .details-btn,
-#closeDialog {
+#closeDialog,
+.chart-mode-btn {
   border: 1px solid var(--border);
   color: var(--text);
   background: var(--card);
@@ -101,7 +108,8 @@ h1 {
 }
 
 .glass-btn,
-#sortSelect {
+#sortSelect,
+.chart-mode-btn {
   padding: 0.65rem 1rem;
 }
 
@@ -117,7 +125,8 @@ h1 {
   font-weight: 600;
 }
 
-.tab.active {
+.tab.active,
+.chart-mode-btn.active {
   background: linear-gradient(130deg, rgba(95, 212, 255, 0.35), rgba(139, 92, 246, 0.4));
   border-color: transparent;
 }
@@ -127,7 +136,18 @@ h1 {
   flex-wrap: wrap;
   gap: 0.75rem;
   justify-content: space-between;
-  margin-bottom: 1rem;
+  margin-bottom: 0.7rem;
+}
+
+.toolbar-right {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.chart-mode {
+  display: flex;
+  gap: 0.4rem;
 }
 
 .search-box {
@@ -148,6 +168,12 @@ h1 {
   color: var(--text);
   width: 100%;
   font-size: 0.95rem;
+}
+
+.status-text {
+  margin: 0 0 1rem;
+  color: var(--muted);
+  font-size: 0.9rem;
 }
 
 .summary-grid {
@@ -224,17 +250,30 @@ dialog {
 }
 
 .sparkline {
-  margin-top: 0.7rem;
-  display: flex;
-  gap: 4px;
-  height: 40px;
+  margin-top: 0.9rem;
+  height: 60px;
 }
 
-.sparkline span {
-  flex: 1;
-  border-radius: 5px 5px 2px 2px;
-  background: linear-gradient(180deg, var(--accent), transparent);
-  opacity: 0.8;
+.sparkline-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.sparkline-svg.line-mode polyline {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2.5;
+}
+
+.sparkline-svg.line-mode .fill {
+  stroke: none;
+  fill: color-mix(in srgb, var(--accent) 25%, transparent);
+}
+
+.sparkline-svg.bar-mode rect {
+  fill: var(--accent);
+  opacity: 0.82;
 }
 
 .details-btn {
@@ -261,10 +300,10 @@ dialog {
 }
 
 #closeDialog {
-  padding: 0.25rem 0.5rem;
+  padding: 0.35rem 0.65rem;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .site-header {
     flex-direction: column;
   }
@@ -273,7 +312,12 @@ dialog {
     flex-direction: column;
   }
 
-  #sortSelect {
+  .toolbar-right {
     width: 100%;
+  }
+
+  #sortSelect,
+  .chart-mode {
+    flex: 1;
   }
 }

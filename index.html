@@ -19,13 +19,14 @@
     <header class="site-header">
       <div>
         <p class="eyebrow">GLOBAL SCREENING</p>
-        <h1>Stock, Crypto & Macro Monitor</h1>
+        <h1>Realtime Stock, Crypto & Macro Monitor</h1>
         <p class="subtitle">
-          Interactive watchlist untuk top market cap assets. Data saat ini disiapkan sebagai
-          baseline dan siap kamu update kapan saja.
+          Dashboard modern dengan data live, auto-refresh setiap 60 detik, dan mode chart Line/Bar
+          untuk membaca pergerakan market secara cepat.
         </p>
       </div>
       <div class="header-actions">
+        <button class="glass-btn" id="refreshButton">Refresh Now</button>
         <button class="glass-btn" id="themeToggle">Toggle Theme</button>
       </div>
     </header>
@@ -42,17 +43,26 @@
           <span>🔎</span>
           <input type="text" id="searchInput" placeholder="Cari asset / kode..." />
         </label>
-        <select id="sortSelect">
-          <option value="marketCap_desc">Market Cap (Desc)</option>
-          <option value="marketCap_asc">Market Cap (Asc)</option>
-          <option value="change_desc">Daily Change (Desc)</option>
-          <option value="change_asc">Daily Change (Asc)</option>
-          <option value="name_asc">Name (A-Z)</option>
-        </select>
+
+        <div class="toolbar-right">
+          <select id="sortSelect">
+            <option value="marketCap_desc">Market Cap (Desc)</option>
+            <option value="marketCap_asc">Market Cap (Asc)</option>
+            <option value="change_desc">Daily Change (Desc)</option>
+            <option value="change_asc">Daily Change (Asc)</option>
+            <option value="name_asc">Name (A-Z)</option>
+          </select>
+
+          <div class="chart-mode" aria-label="Chart mode">
+            <button class="chart-mode-btn active" data-mode="line">Line</button>
+            <button class="chart-mode-btn" data-mode="bar">Bar</button>
+          </div>
+        </div>
       </section>
 
-      <section id="summaryCards" class="summary-grid"></section>
+      <p id="statusText" class="status-text">Menginisialisasi data market...</p>
 
+      <section id="summaryCards" class="summary-grid"></section>
       <section id="assetGrid" class="asset-grid"></section>
     </main>
 
